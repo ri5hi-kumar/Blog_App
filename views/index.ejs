@@ -6,6 +6,23 @@
     <title>Blog App</title>
 </head>
 <body>
-    
+    <div>
+        <h1>BlogPosts</h1>
+        <a href="/articles/new">New</a>
+
+        <% articles.forEach(article => { %>
+            <div>
+                <div>
+                    <h4><%= article.title %></h4>
+                    <div>
+                        <%= article.createdAt.toLocaleDateString() %>
+                    </div>
+                    <div>
+                        <%= article.description %>
+                    </div>
+                </div>
+            </div>
+        <% }) %>
+    </div>
 </body>
 </html>

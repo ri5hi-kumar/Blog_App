@@ -10,11 +10,17 @@ app.get('/', (req, res) => {
     const articles = [
         {
             title: 'Test',
-            date: Date.now(),
+            createdAt: new Date(),
             description: 'This is the test description'
+        },
+        {
+            title: 'Test2',
+            createdAt: new Date(),
+            description: 'This is the test 2 description'
         }
     ]
     res.render('index', {articles : articles});
 });
 
-app.listen(5000);
+const PORT = process.env.PORT || 5000;
+app.listen(PORT);
