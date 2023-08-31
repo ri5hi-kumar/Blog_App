@@ -1,24 +1,22 @@
 const express = require('express');
 const articlesRouter = require('./routes/articles');
+const Article = require('./models/article');
 const app = express();
+const mongoose = require("mongoose");
+require('dotenv').config();
 
 app.set('view engine', 'ejs');
+app.use(express.urlencoded({ extended: false }));
+
+// Mongodb connection
+const uri = process.env.ATLAS_URI;
+mongoose.set("strictQuery", false);
+mongoose.connect(uri);
 
 app.use('/articles', articlesRouter);
 
-app.get('/', (req, res) => {
-    const articles = [
-        {
-            title: 'Test',
-            createdAt: new Date(),
-            description: 'This is the test description'
-        },
-        {
-            title: 'Test2',
-            createdAt: new Date(),
-            description: 'This is the test 2 description'
-        }
-    ]
+app.get('/', async (req, res) => {
+    const articles = await Article.find().sort({ createdAt: 'desc'});
     res.render('index', {articles : articles});
 });
 
