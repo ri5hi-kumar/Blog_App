@@ -14,7 +14,7 @@
         <a href="/">All Posts</a>
         <a href="/articles/edit/<%= article.slug %>">Edit</a>
         <div>
-            <%= article.markdown %>
+            <%- article.sanitizedHtml  %>
         </div>
     </div>
 </body>
