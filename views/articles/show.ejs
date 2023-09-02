@@ -12,7 +12,7 @@
             <%= article.createdAt.toLocaleDateString() %>
         </div>
         <a href="/">All Posts</a>
-        <a href="/articles/edit/<%= article.id %>">Edit</a>
+        <a href="/articles/edit/<%= article.slug %>">Edit</a>
         <div>
             <%= article.markdown %>
         </div>
