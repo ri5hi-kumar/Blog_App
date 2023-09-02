@@ -1,7 +1,8 @@
 const express = require('express');
+const app = express();
 const articlesRouter = require('./routes/articles');
 const Article = require('./models/article');
-const app = express();
+const methodOverride = require('method-override'); // for delete method
 const mongoose = require("mongoose");
 require('dotenv').config();
 
@@ -13,6 +14,7 @@ const uri = process.env.ATLAS_URI;
 mongoose.set("strictQuery", false);
 mongoose.connect(uri);
 
+app.use(methodOverride('_method')); // when _method is used it overrides
 app.use('/articles', articlesRouter);
 
 app.get('/', async (req, res) => {
