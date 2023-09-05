@@ -1,21 +1,28 @@
-<div>
-    <label for="title">Title</label>
-    <input required value="<%= article.title %>" type="text" name="title" id="title">
-</div>
+<div class="container mx-auto p-4">
 
-<div>
-    <label for="description">Description</label>
-    <textarea name="description" id="description">
-        <%= article.description %>
-    </textarea>
-</div>
+    <form method="POST" action="/articles/<%= article.id %>?_method=PUT" class="space-y-4">
+        <div>
+            <label for="title" class="block font-semibold">Title</label>
+            <input required value="<%= article.title %>" type="text" name="title" id="title"
+                class="w-full p-2 border border-gray-300 rounded">
+        </div>
 
-<div>
-    <label for="markdown">Markdown</label>
-    <textarea required name="markdown" id="markdown">
-        <%= article.markdown %>
-    </textarea>
-</div>
+        <div>
+            <label for="description" class="block font-semibold">Description</label>
+            <textarea name="description" id="description"
+                class="w-full p-2 border border-gray-300 rounded"><%= article.description %></textarea>
+        </div>
 
-<a href="/">Cancel</a>
-<input type="submit" value="Submit">
+        <div>
+            <label for="markdown" class="block font-semibold">Markdown</label>
+            <textarea required name="markdown" id="markdown"
+                class="w-full p-2 border border-gray-300 rounded"><%= article.markdown %></textarea>
+        </div>
+
+        <div class="flex space-x-2">
+            <a href="/" class="px-4 py-2 text-blue-500 hover:underline">Cancel</a>
+            <input type="submit" value="Submit"
+                class="px-4 py-2 bg-blue-500 text-white hover:bg-blue-700 rounded cursor-pointer">
+        </div>
+    </form>
+</div>
